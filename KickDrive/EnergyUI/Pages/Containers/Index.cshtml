@@ -1,0 +1,50 @@
+﻿@page
+@model EnergyUI.Pages.Containers.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Containers</h1>
+
+<h3>@Model.Containers.Count()</h3>
+@if (Model.Containers.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(x =>
+x.Containers.FirstOrDefault().NombreC)
+            </th>
+            <th scope="col">@Html.DisplayNameFor(x => x.Containers.FirstOrDefault().CanDEnvi)</th>
+            <th scope="col">
+                @Html.DisplayNameFor(x =>
+x.Containers.FirstOrDefault().CMC)
+        </th>
+        <th scope="col">@Html.DisplayNameFor(x => x.Containers.FirstOrDefault().NCamiones)</th>
+<th scope="col"></th>
+</tr>
+</thead>
+        <tbody>
+            @foreach (var item in Model.Containers)
+            {
+                <tr>
+                    <th scope="row">@Html.DisplayFor(m => item.NombreC)</th>
+                    <td>@Html.DisplayFor(m => item.CanDEnvi)</td>
+                    <td>@Html.DisplayFor(m => item.CMC)</td>
+                    <td>@Html.DisplayFor(m => item.NCamiones)</td>
+                    <td><button class="btn btn-success btn-sm">Editar</button></td>
+                </tr>
+            }
+
+        </tbody>
+</table>
+
+}
+else
+{
+<div class="border text-center">
+    <p>No existen contenedores registrados.</p>
+</div>
+}
+
