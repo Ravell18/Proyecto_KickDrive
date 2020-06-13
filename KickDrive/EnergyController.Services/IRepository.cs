@@ -7,6 +7,6 @@ namespace EnergyController.Services
 {
     public interface IRepository
     {
-        public IEnumerable<Container> GetAll();
+        public IEnumerable<Driver> GetAll();
     }
 }
