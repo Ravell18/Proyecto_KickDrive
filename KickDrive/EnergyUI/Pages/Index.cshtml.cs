@@ -21,5 +21,6 @@ namespace EnergyUI.Pages
         {
 
         }
+
     }
 }

@@ -6,9 +6,12 @@ using EnergyController.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 namespace EnergyUI
 {
@@ -24,7 +27,20 @@ namespace EnergyUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<AppDBContext>(option => {
+                option.UseSqlServer(Configuration.GetConnectionString("EFDbConnection"));
+            });
             services.AddRazorPages();
+            services.AddScoped<AppDBContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
+            services.AddScoped<IRouteRepository, RouteRepository>();
+
+
+            services.AddRouting(option => {
+                option.LowercaseUrls = true;
+                option.LowercaseQueryStrings = true;
+                option.AppendTrailingSlash = true;
+            });
 
         }
 

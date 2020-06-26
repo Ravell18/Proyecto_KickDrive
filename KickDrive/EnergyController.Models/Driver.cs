@@ -13,5 +13,8 @@ namespace EnergyController.Models
         public int NSS { get; set; }
         public string FrontPhoto { get; set; }
         public string ProfilePhoto { get; set; }
+
+        //Navegabilidad
+        public ICollection<Routes> Route { get; set; }
     }
 }
