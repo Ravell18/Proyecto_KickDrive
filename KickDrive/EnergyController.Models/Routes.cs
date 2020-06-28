@@ -37,7 +37,7 @@ namespace EnergyController.Models
         [Display(Name = "Vehicles")]
         [Required(ErrorMessage = "Vehicles is required.")]
         [ForeignKey("Vehicles")]
-        public int? VehicleId { get; set; }
+        public int? IdVehicles { get; set; }
         public Vehicles Vehicles { get; set; }
 
     }
