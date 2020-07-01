@@ -4,9 +4,8 @@ using System.Text;
 
 namespace EnergyController.Models
 {
-    public class Driver
+    public class Driver:BaseEntity
     {
-        public int DriverId { get; set; }
         public string DriverName { get; set; }
         public string INE { get; set; }
         public string License { get; set; }

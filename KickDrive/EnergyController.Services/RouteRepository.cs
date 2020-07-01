@@ -5,6 +5,7 @@ using System.Text;
 using EnergyController.Models;
 using System.Linq;
 
+
 namespace EnergyController.Services
 {
     public class RouteRepository : SQLRepository<Routes>, IRouteRepository

@@ -11,8 +11,11 @@ namespace EnergyController.Services.Migrations
                 name: "Drivers",
                 columns: table => new
                 {
-                    DriverId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CreateAT = table.Column<DateTime>(nullable: false),
+                    UpdateAT = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
                     DriverName = table.Column<string>(nullable: true),
                     INE = table.Column<string>(nullable: true),
                     License = table.Column<string>(nullable: true),
@@ -22,7 +25,7 @@ namespace EnergyController.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Drivers", x => x.DriverId);
+                    table.PrimaryKey("PK_Drivers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -34,7 +37,7 @@ namespace EnergyController.Services.Migrations
                     CreateAT = table.Column<DateTime>(nullable: false),
                     UpdateAT = table.Column<DateTime>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
-                    NProp = table.Column<int>(nullable: false),
+                    NProp = table.Column<string>(nullable: true),
                     Brand = table.Column<string>(nullable: true),
                     NSerie = table.Column<int>(nullable: false),
                     Model = table.Column<string>(nullable: true),
@@ -71,7 +74,7 @@ namespace EnergyController.Services.Migrations
                     NYES = table.Column<string>(nullable: true),
                     Adults = table.Column<string>(nullable: true),
                     DriverId = table.Column<int>(nullable: false),
-                    VehicleId = table.Column<int>(nullable: false)
+                    IdVehicles = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,11 +83,11 @@ namespace EnergyController.Services.Migrations
                         name: "FK_Route_Drivers_DriverId",
                         column: x => x.DriverId,
                         principalTable: "Drivers",
-                        principalColumn: "DriverId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Route_Vehicle_VehicleId",
-                        column: x => x.VehicleId,
+                        name: "FK_Route_Vehicle_IdVehicles",
+                        column: x => x.IdVehicles,
                         principalTable: "Vehicle",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -96,9 +99,9 @@ namespace EnergyController.Services.Migrations
                 column: "DriverId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Route_VehicleId",
+                name: "IX_Route_IdVehicles",
                 table: "Route",
-                column: "VehicleId");
+                column: "IdVehicles");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

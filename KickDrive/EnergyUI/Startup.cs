@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EnergyController.Services;
+using EnergyController.Services.Controladores;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,7 @@ namespace EnergyUI
             services.AddScoped<AppDBContext>();
             services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
             services.AddScoped<IRouteRepository, RouteRepository>();
+            services.AddScoped<IRepositoryVehicles, ContVehicles>();
 
 
             services.AddRouting(option => {

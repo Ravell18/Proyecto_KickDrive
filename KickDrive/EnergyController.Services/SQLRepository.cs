@@ -11,12 +11,12 @@ namespace EnergyController.Services
     public class SQLRepository<T>: IRepository <T> where T:BaseEntity
     {
         protected readonly AppDBContext context;
-        private DbSet<T> entitles;
+        public DbSet<T> entities;
 
         public SQLRepository(AppDBContext context)
         {
             this.context = context;
-            entitles = context.Set<T>();
+            entities = context.Set<T>();
         }
         public SQLRepository()
         {
@@ -29,23 +29,23 @@ namespace EnergyController.Services
             obj.UpdateAT = DateTime.Now;
             obj.Status = false;
 
-            var entity = entitles.Attach(obj);
+            var entity = entities.Attach(obj);
             entity.State = EntityState.Modified;
             context.SaveChanges();
         }
         public T Get(int id)
         {
-            return entitles.SingleOrDefault(x => x.Id == id);
+            return entities.SingleOrDefault(x => x.Id == id);
         }
         public IEnumerable<T> GetAll()
         {
-            return entitles.AsEnumerable();
+            return entities.AsEnumerable();
         }
         public int Insert(T obj)
         {
             if (obj == null) throw new ArgumentNullException("Entity");
 
-            entitles.Add(obj);
+            entities.Add(obj);
             context.SaveChanges();
             return obj.Id;
         }
@@ -53,7 +53,7 @@ namespace EnergyController.Services
         {
             if (obj == null) throw new ArgumentNullException("Entity");
             if (obj.Id <= 0) throw new ArgumentNullException("Entity");
-            var entity = entitles.Attach(obj);
+            var entity = entities.Attach(obj);
             entity.State = EntityState.Modified;
             context.SaveChanges();
         }

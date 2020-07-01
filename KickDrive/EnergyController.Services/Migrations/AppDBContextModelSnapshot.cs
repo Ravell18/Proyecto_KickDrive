@@ -21,10 +21,13 @@ namespace EnergyController.Services.Migrations
 
             modelBuilder.Entity("EnergyController.Models.Driver", b =>
                 {
-                    b.Property<int>("DriverId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateAT")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DriverName")
                         .HasColumnType("nvarchar(max)");
@@ -44,7 +47,13 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("ProfilePhoto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DriverId");
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdateAT")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Drivers");
                 });
@@ -66,6 +75,10 @@ namespace EnergyController.Services.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<int?>("IdVehicles")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<string>("Incidents")
                         .HasColumnType("nvarchar(max)");
 
@@ -84,10 +97,6 @@ namespace EnergyController.Services.Migrations
                     b.Property<DateTime?>("UpdateAT")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("VehicleId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
                     b.Property<string>("timeE")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -100,7 +109,7 @@ namespace EnergyController.Services.Migrations
 
                     b.HasIndex("DriverId");
 
-                    b.HasIndex("VehicleId");
+                    b.HasIndex("IdVehicles");
 
                     b.ToTable("Route");
                 });
@@ -133,8 +142,8 @@ namespace EnergyController.Services.Migrations
                     b.Property<int>("NMotor")
                         .HasColumnType("int");
 
-                    b.Property<int>("NProp")
-                        .HasColumnType("int");
+                    b.Property<string>("NProp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NRegist")
                         .HasColumnType("int");
@@ -178,7 +187,7 @@ namespace EnergyController.Services.Migrations
 
                     b.HasOne("EnergyController.Models.Vehicles", "Vehicles")
                         .WithMany("Route")
-                        .HasForeignKey("VehicleId")
+                        .HasForeignKey("IdVehicles")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
