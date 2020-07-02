@@ -48,7 +48,7 @@ namespace EnergyController.Services.Migrations
                     TipLlantas = table.Column<string>(nullable: true),
                     CapPerson = table.Column<int>(nullable: false),
                     CapTon = table.Column<int>(nullable: false),
-                    Placas = table.Column<int>(nullable: false),
+                    Placas = table.Column<string>(nullable: true),
                     OfExp = table.Column<string>(nullable: true),
                     NRegist = table.Column<int>(nullable: false)
                 },
@@ -67,7 +67,7 @@ namespace EnergyController.Services.Migrations
                     UpdateAT = table.Column<DateTime>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
                     NameSup = table.Column<string>(nullable: true),
-                    NumSup = table.Column<int>(nullable: false),
+                    NumRuta = table.Column<int>(nullable: false),
                     Incidents = table.Column<string>(nullable: true),
                     timeE = table.Column<string>(nullable: false),
                     timeS = table.Column<string>(nullable: false),
@@ -93,6 +93,36 @@ namespace EnergyController.Services.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ReportRoute",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreateAT = table.Column<DateTime>(nullable: false),
+                    UpdateAT = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    DriverName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(nullable: true),
+                    RoutesId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReportRoute", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ReportRoute_Route_RoutesId",
+                        column: x => x.RoutesId,
+                        principalTable: "Route",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReportRoute_RoutesId",
+                table: "ReportRoute",
+                column: "RoutesId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Route_DriverId",
                 table: "Route",
@@ -106,6 +136,9 @@ namespace EnergyController.Services.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ReportRoute");
+
             migrationBuilder.DropTable(
                 name: "Route");
 

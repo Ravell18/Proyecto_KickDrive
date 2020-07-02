@@ -36,6 +36,8 @@ namespace EnergyUI
             services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
             services.AddScoped<IRouteRepository, RouteRepository>();
             services.AddScoped<IRepositoryVehicles, ContVehicles>();
+            services.AddScoped<IRepositoryRoute, ContRoutes>();
+            services.AddScoped<IRepositoryDriver, ContDriver>();
 
 
             services.AddRouting(option => {

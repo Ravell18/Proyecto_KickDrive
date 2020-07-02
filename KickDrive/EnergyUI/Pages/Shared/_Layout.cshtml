@@ -27,10 +27,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rutas</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="" asp-page="/Containers/ReportMens">Reportes mensuales</a>
-                                <a class="dropdown-item" asp-area="" asp-page="/Containers/ReportR">Reportar rutas</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="" asp-page="/Containers/ContRuta">Control de rutas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-page="/Containers/ReportMens">Registro del control de rutas</a>
                                 <a class="dropdown-item" asp-area="" asp-page="/Containers/CVehiculos">Vehiculos registrados</a>
                                 <a class="dropdown-item" asp-area="" asp-page="/Containers/CDriver">Conductores registrados</a>
                             </div>
@@ -40,6 +39,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-page="/Containers/Conductor">Conductores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" asp-area="" asp-page="/Containers/ReportR">Reportar rutas</a>
                         </li>
                     </ul>
                 </div>

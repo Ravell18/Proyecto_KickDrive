@@ -4,6 +4,49 @@
     ViewData["Title"] = "Index3";
 }
 
-<h1 class="text-info">Reportes mensuales</h1>
-<form class="mt-3" method="post">
-</form>
+<h1 class="text-info">Registros de reportes de ruta</h1>
+@if (Model.Routes.Any())
+{
+    <table class="table table-info table-striped">
+        <!--Head-->
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().Id)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().NameSup)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().NumRuta)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().timeE)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().timeS)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().NYES)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().Adults)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().DriverId)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().IdVehicles)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.Routes.FirstOrDefault().Incidents)</th>
+            </tr>
+        </thead>
+        <!--Body-->
+        <tbody>
+            @foreach (var item in Model.Routes)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(m => item.Id)</td>
+                    <td>@Html.DisplayFor(m => item.NameSup)</td>
+                    <td>@Html.DisplayFor(m => item.NumRuta)</td>
+                    <td>@Html.DisplayFor(m => item.timeE)</td>
+                    <td>@Html.DisplayFor(m => item.timeS)</td>
+                    <td>@Html.DisplayFor(m => item.NYES)</td>
+                    <td>@Html.DisplayFor(m => item.Adults)</td>
+                    <td>@Html.DisplayFor(m => item.DriverId)</td>
+                    <td>@Html.DisplayFor(m => item.IdVehicles)</td>
+                    <td>@Html.DisplayFor(m => item.Incidents)</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+else
+{
+    <div class="mx-auto text-center">
+        <span class="text-danger">No se encontraron vehiculos registrados.</span>
+    </div>
+}

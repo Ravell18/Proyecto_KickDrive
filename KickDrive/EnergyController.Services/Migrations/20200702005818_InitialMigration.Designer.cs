@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyController.Services.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20200701150816_InitialMigration")]
+    [Migration("20200702005818_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,42 @@ namespace EnergyController.Services.Migrations
                     b.ToTable("Drivers");
                 });
 
+            modelBuilder.Entity("EnergyController.Models.ReportRoute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DriverName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoutesId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdateAT")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoutesId");
+
+                    b.ToTable("ReportRoute");
+                });
+
             modelBuilder.Entity("EnergyController.Models.Routes", b =>
                 {
                     b.Property<int>("Id")
@@ -90,7 +126,7 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("NameSup")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumSup")
+                    b.Property<int>("NumRuta")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -156,8 +192,8 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("OfExp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Placas")
-                        .HasColumnType("int");
+                    b.Property<string>("Placas")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -177,6 +213,15 @@ namespace EnergyController.Services.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehicle");
+                });
+
+            modelBuilder.Entity("EnergyController.Models.ReportRoute", b =>
+                {
+                    b.HasOne("EnergyController.Models.Routes", "Routes")
+                        .WithMany("ReportRoutes")
+                        .HasForeignKey("RoutesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EnergyController.Models.Routes", b =>

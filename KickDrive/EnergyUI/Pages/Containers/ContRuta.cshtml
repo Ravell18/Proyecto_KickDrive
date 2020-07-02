@@ -7,51 +7,51 @@
 <h1 class="text-info">Control de rutas</h1>
 <form class="mt-3" method="post">
 </form>
-<form>
+<form method="post">
     <div class="form-group">
-        <label for="inputAddress">Nombre de supervisor</label>
-        <input type="text" class="form-control" id="inputAddress">
+        <label class="col-form-label coll-sm-2">Nombre de supervisor</label>
+        <input type="text" asp-for="@Model.Routes.NameSup" class="form-control form-text" role="textbox" />
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="inputEmail4">Ruta</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Id de ruta">
+            <label class="col-form-label coll-sm-2">Ruta</label>
+            <input type="text" asp-for="@Model.Routes.NumRuta" class="form-control form-text" role="textbox" />
         </div>
         <div class="form-group col-md-4">
-            <label for="inputEmail4">Conductor</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Id de conductor">
+            <label class="col-form-label coll-sm-2">Conductor</label>
+            <input type="text" asp-for="@Model.Routes.DriverId" class="form-control form-text" role="textbox" />
         </div>
         <div class="form-group col-md-4">
-            <label for="inputPassword4">Numero de camion</label>
-            <input type="text" class="form-control" id="inputPassword4" placeholder="Id de camion">
+            <label class="col-form-label coll-sm-2">Numero de camion</label>
+            <input type="text" asp-for="@Model.Routes.IdVehicles" class="form-control form-text" role="textbox" />
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputEmail4">Hora Llegada</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label class="col-form-label coll-sm-2">Hora Llegada</label>
+            <input type="date" asp-for="@Model.Routes.timeE" class="form-control form-text" role="textbox" />
         </div>
         <div class="form-group col-md-6">
-            <label for="inputPassword4">Hora de Salida</label>
-            <input type="text" class="form-control" id="inputPassword4">
+            <label class="col-form-label coll-sm-2">Hora de Salida</label>
+            <input type="date" asp-for="@Model.Routes.timeS" class="form-control form-text" role="textbox" />
         </div>
     </div>
     <div class="form-group col-md-6" align="left" font size="5">
-        <label for="inputCity">Informacion de viaje</label>
+        <label class="col-form-label coll-sm-2">Informacion de viaje</label>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="inputState">Niños/Estudiantes</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="# de niños/estudiantes">
+            <label class="col-form-label coll-sm-2">Niños/Estudiantes</label>
+            <input type="text" asp-for="@Model.Routes.NYES" class="form-control form-text" role="textbox" placeholder="# de niños/estudiantes"/>
         </div>
         <div class="form-group col-md-4">
-            <label for="inputZip">Adultos</label>
-            <input type="text" class="form-control" id="inputZip" placeholder="# de adultos">
+            <label class="col-form-label coll-sm-2">Adultos</label>
+            <input type="text" asp-for="@Model.Routes.Adults" class="form-control form-text" role="textbox" placeholder="# de adultos"/>
         </div>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Incidentes</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label class="col-form-label coll-sm-2">Incidentes</label>
+        <input type="text" asp-for="@Model.Routes.Incidents" class="form-control form-text" role="textbox" rows="3" />
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>

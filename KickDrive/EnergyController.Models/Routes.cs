@@ -11,7 +11,7 @@ namespace EnergyController.Models
     {
 
         public string NameSup { get; set; }
-        public int NumSup { get; set; }
+        public int NumRuta { get; set; }
 
         //Incidentes
         public string Incidents { get; set; }
@@ -39,6 +39,9 @@ namespace EnergyController.Models
         [ForeignKey("Vehicles")]
         public int? IdVehicles { get; set; }
         public Vehicles Vehicles { get; set; }
+
+
+        public ICollection<ReportRoute> ReportRoutes { get; set; }
 
     }
 }

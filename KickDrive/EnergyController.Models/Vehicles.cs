@@ -29,7 +29,7 @@ namespace EnergyController.Models
         //Capacidad de toneladas
         public int CapTon { get; set; }
         //Placas
-        public int Placas { get; set; }
+        public string Placas { get; set; }
         //Oficina 
         public string OfExp { get; set; }
         //Numero de registro
