@@ -23,18 +23,25 @@
         <tbody>
             @foreach (var item in Model.Drivers)
             {
-                <tr>
-                    <td scope="row">@Html.DisplayFor(m => item.DriverName)</td>
-                    <td>@Html.DisplayFor(m => item.INE)</td>
-                    <td>@Html.DisplayFor(m => item.License)</td>
-                    <td>@Html.DisplayFor(m => item.NSS)</td>
-                    <td>@Html.DisplayFor(m => item.FrontPhoto)</td>
-                    <td>@Html.DisplayFor(m => item.ProfilePhoto)</td>
-                </tr>
+            <tr>
+                <td scope="row">@Html.DisplayFor(m => item.DriverName)</td>
+                <td>@Html.DisplayFor(m => item.INE)</td>
+                <td>@Html.DisplayFor(m => item.License)</td>
+                <td>@Html.DisplayFor(m => item.NSS)</td>
+                <td>@Html.DisplayFor(m => item.FrontPhoto)</td>
+                <td>@Html.DisplayFor(m => item.ProfilePhoto)</td>
+                <td>
+                    <a asp-page="/Containers/EditDriver" asp-route-ID="@item.Id" class="btn btn-success">Visualizar</a>
+                </td>
+                <td>
+                    <button type="submit" asp-page-handler="Deletes" asp-route-ID="@item.Id" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
             }
         </tbody>
 
     </table>
+
 }
 else
 {

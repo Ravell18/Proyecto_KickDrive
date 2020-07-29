@@ -9,6 +9,10 @@ namespace EnergyController.Services
     public interface IRepositoryVehicles
     {
         public int InsertS(Vehicles vehicles);
-        
+        public IEnumerable<Vehicles> GetAll();
+        public Vehicles GetVehicles(int id);
+        public IEnumerable<Vehicles> GetV();
+        public Vehicles Updates(Vehicles vehicles);
+        public Vehicles Deletes(Vehicles vehicles);
     }
 }

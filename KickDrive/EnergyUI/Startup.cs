@@ -38,7 +38,9 @@ namespace EnergyUI
             services.AddScoped<IRepositoryVehicles, ContVehicles>();
             services.AddScoped<IRepositoryRoute, ContRoutes>();
             services.AddScoped<IRepositoryDriver, ContDriver>();
-
+            services.AddScoped<IRepositoryValidar, ContValidar>();
+            services.AddScoped<IRepositoryLogins, ContLogins>();
+            services.AddScoped<IRepositoryReportR, ContReportR>();
 
             services.AddRouting(option => {
                 option.LowercaseUrls = true;

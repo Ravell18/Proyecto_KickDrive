@@ -16,16 +16,21 @@ namespace EnergyUI.Pages.Containers
         [BindProperty]
         public Driver Driver { get; set; }
         public IRepositoryDriver repositoryDriver;
+        public IWebHostEnvironment HostEnvironment { get; }
 
-        public Index5Model(IRepositoryDriver repositoryDriver)
+
+        public Index5Model(IRepositoryDriver repositoryDriver,IWebHostEnvironment hostEnvironment)
         {
             this.repositoryDriver = repositoryDriver;
+            HostEnvironment = hostEnvironment;
         }
 
         public void OnPost()
         {
             repositoryDriver.InsertD(Driver);
         }
+
+
 
     }
 }

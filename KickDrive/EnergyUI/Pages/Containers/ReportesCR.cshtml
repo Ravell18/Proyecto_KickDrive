@@ -1,0 +1,42 @@
+﻿@page
+@model EnergyUI.Pages.Containers.ReportesCRModel
+@{
+    ViewData["Title"] = "ReportesCR";
+}
+
+<h1>ReportesCR</h1>
+@if (Model.reportRoutes.Any())
+{
+    <table class="table table-info table-striped">
+        <!--Head-->
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(x => x.reportRoutes.FirstOrDefault().DriverName)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.reportRoutes.FirstOrDefault().Email)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.reportRoutes.FirstOrDefault().Routes)</th>
+                <th scope="col">@Html.DisplayNameFor(x => x.reportRoutes.FirstOrDefault().Message)</th>
+
+            </tr>
+        </thead>
+        <!--Body-->
+        <tbody>
+            @foreach (var item in Model.reportRoutes)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(m => item.DriverName)</td>
+                    <td>@Html.DisplayFor(m => item.Email)</td>
+                    <td>@Html.DisplayFor(m => item.Routes)</td>
+                    <td>@Html.DisplayFor(m => item.Message)</td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+else
+{
+    <div class="mx-auto text-center">
+        <span class="text-danger">No se encontraron Rutas Reportadas.</span>
+    </div>
+}

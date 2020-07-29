@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EnergyController.Services.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,13 +19,30 @@ namespace EnergyController.Services.Migrations
                     DriverName = table.Column<string>(nullable: true),
                     INE = table.Column<string>(nullable: true),
                     License = table.Column<string>(nullable: true),
-                    NSS = table.Column<int>(nullable: false),
+                    NSS = table.Column<string>(nullable: true),
                     FrontPhoto = table.Column<string>(nullable: true),
                     ProfilePhoto = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Drivers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Logins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreateAT = table.Column<DateTime>(nullable: false),
+                    UpdateAT = table.Column<DateTime>(nullable: true),
+                    Status = table.Column<bool>(nullable: false),
+                    Usuario = table.Column<string>(nullable: false),
+                    pass = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Logins", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,7 +111,7 @@ namespace EnergyController.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReportRoute",
+                name: "ReportRoutes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -109,9 +126,9 @@ namespace EnergyController.Services.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReportRoute", x => x.Id);
+                    table.PrimaryKey("PK_ReportRoutes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ReportRoute_Route_RoutesId",
+                        name: "FK_ReportRoutes_Route_RoutesId",
                         column: x => x.RoutesId,
                         principalTable: "Route",
                         principalColumn: "Id",
@@ -119,8 +136,8 @@ namespace EnergyController.Services.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReportRoute_RoutesId",
-                table: "ReportRoute",
+                name: "IX_ReportRoutes_RoutesId",
+                table: "ReportRoutes",
                 column: "RoutesId");
 
             migrationBuilder.CreateIndex(
@@ -137,7 +154,10 @@ namespace EnergyController.Services.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ReportRoute");
+                name: "Logins");
+
+            migrationBuilder.DropTable(
+                name: "ReportRoutes");
 
             migrationBuilder.DropTable(
                 name: "Route");

@@ -15,7 +15,9 @@ namespace EnergyController.Services
         public DbSet<Routes> Route { get; set; }
         public DbSet<Vehicles> Vehicle { get; set; }
         public DbSet<Driver> Drivers { get; set; }
-    
+        public DbSet<Logins> Logins { get; set; }
+        public DbSet<ReportRoute> ReportRoutes { get; set; }
+
 
     }
 

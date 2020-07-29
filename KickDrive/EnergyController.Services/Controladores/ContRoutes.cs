@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EnergyController.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EnergyController.Services.Controladores
 {
@@ -20,5 +21,6 @@ namespace EnergyController.Services.Controladores
         {
             return context.Set<Routes>().AsEnumerable();
         }
+       
     }
 }

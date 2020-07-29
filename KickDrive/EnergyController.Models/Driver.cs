@@ -9,7 +9,7 @@ namespace EnergyController.Models
         public string DriverName { get; set; }
         public string INE { get; set; }
         public string License { get; set; }
-        public int NSS { get; set; }
+        public string NSS { get; set; }
         public string FrontPhoto { get; set; }
         public string ProfilePhoto { get; set; }
 

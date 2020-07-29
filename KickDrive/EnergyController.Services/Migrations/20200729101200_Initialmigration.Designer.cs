@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyController.Services.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20200702005818_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200729101200_Initialmigration")]
+    partial class Initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,8 +43,8 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("License")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NSS")
-                        .HasColumnType("int");
+                    b.Property<string>("NSS")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePhoto")
                         .HasColumnType("nvarchar(max)");
@@ -58,6 +58,35 @@ namespace EnergyController.Services.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Drivers");
+                });
+
+            modelBuilder.Entity("EnergyController.Models.Logins", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdateAT")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pass")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logins");
                 });
 
             modelBuilder.Entity("EnergyController.Models.ReportRoute", b =>
@@ -93,7 +122,7 @@ namespace EnergyController.Services.Migrations
 
                     b.HasIndex("RoutesId");
 
-                    b.ToTable("ReportRoute");
+                    b.ToTable("ReportRoutes");
                 });
 
             modelBuilder.Entity("EnergyController.Models.Routes", b =>
