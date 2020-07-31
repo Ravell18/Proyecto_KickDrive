@@ -8,6 +8,6 @@ namespace EnergyController.Services
 {
     public interface IRepositoryLogins
     {
-        public int InsertL(Logins Login);
+        public int InsertL(Logins logins);
     }
 }
