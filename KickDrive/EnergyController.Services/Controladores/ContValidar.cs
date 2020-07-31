@@ -9,20 +9,21 @@ using EnergyController.Models;
 
 namespace EnergyController.Services.Controladores
 {
-    public class ContValidar: SQLRepository<Logins>, IRepositoryValidar
+    public class ContValidar: SQLRepository<User>, IRepositoryValidar
     {
         public  ContValidar(AppDBContext context):base(context) { }
-        public IEnumerable<Logins> GetLogins()
+        public IEnumerable<User> GetUser()
         {
-            return context.Set<Logins>().AsEnumerable();
+            return context.Set<User>().AsEnumerable();
         }
-        public int Validar(Logins logins)
+
+        public int Validar(User users)
         {
-            var cuenta2 = context.Logins.ToList();
+            var cuenta2 = context.Users.ToList();
             int i = 0;
             foreach (var items in cuenta2)
             {
-                if (logins.Usuario == items.Usuario && logins.pass == items.pass)
+                if (users.UserName == items.UserName && users.Password == items.Password)
                 {
                     i = items.Id;
                     break;

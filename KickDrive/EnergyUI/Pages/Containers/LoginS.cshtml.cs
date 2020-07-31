@@ -12,7 +12,7 @@ namespace EnergyUI.Pages.Containers
     public class LoginSModel : PageModel
     {
         [BindProperty]
-        public Logins Logins { get; set; }
+        public User user { get; set; }
 
         public IRepositoryValidar repositorycuentas;
 
@@ -25,9 +25,9 @@ namespace EnergyUI.Pages.Containers
         }
         public IActionResult OnPost()
         {
-            i = repositorycuentas.Validar(Logins);
+            i = repositorycuentas.Validar(user);
 
-            if (i > 1)
+            if (i >= 1)
             {
                 return Redirect("/Index");
 

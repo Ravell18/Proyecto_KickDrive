@@ -10,15 +10,15 @@ using EnergyController.Models;
 
 namespace EnergyController.Services.Controladores
 {
-    public class ContLogins: SQLRepository<Logins>, IRepositoryLogins
+    public class ContLogins: SQLRepository<User>, IRepositoryLogins
     {
         public ContLogins(AppDBContext context) : base(context) { }
-        public int InsertL(Logins logins)
+        public int InsertL(User user)
         {
-            if (logins == null) throw new ArgumentNullException("Entity");
-            entities.Add(logins);
+            if (user == null) throw new ArgumentNullException("Entity");
+            entities.Add(user);
             context.SaveChanges();
-            return logins.Id;
+            return user.Id;
         }
 
     }

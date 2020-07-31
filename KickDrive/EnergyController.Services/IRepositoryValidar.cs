@@ -8,6 +8,6 @@ namespace EnergyController.Services
 {
     public interface IRepositoryValidar
     {
-        public int Validar(Logins logins);
+        public int Validar(User user);
     }
 }

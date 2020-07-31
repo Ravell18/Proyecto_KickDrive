@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EnergyController.Models;
 using EnergyController.Services;
 using EnergyController.Services.Controladores;
 using Microsoft.AspNetCore.Builder;

@@ -9,5 +9,6 @@ namespace EnergyController.Services
     public interface IRepositoryRoute
     {
         public int InsertR(Routes routes);
+
     }
 }
