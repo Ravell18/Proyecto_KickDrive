@@ -18,7 +18,7 @@ namespace EnergyController.Services.Controladores
         }
         public int Validar(Logins logins)
         {
-            var cuenta2 = context.Login.ToList();
+            var cuenta2 = context.Logins.ToList();
             int i = 0;
             foreach (var items in cuenta2)
             {

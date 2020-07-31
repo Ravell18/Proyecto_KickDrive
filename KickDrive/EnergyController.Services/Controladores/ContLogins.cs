@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using EnergyController.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using EnergyController.Models;
 
 
 namespace EnergyController.Services.Controladores
