@@ -14,7 +14,7 @@ namespace EnergyUI.Pages.Containers
     public class EditDriverModel : PageModel
     {
         [BindProperty]
-        public Driver Drivers { get; private set; }
+        public Driver Driverss { get; private set; }
         public SelectList conductores { get; private set; }
         public IRepositoryDriver repositoryDriver;
         public EditDriverModel(IRepositoryDriver repositoryDriver)
@@ -23,13 +23,13 @@ namespace EnergyUI.Pages.Containers
         }
         public void OnGet(int Id)
         {
-            Drivers = repositoryDriver.GetD(Id);
-            conductores = new SelectList(repositoryDriver.GetDriver(), nameof(Driver.Id),
-            nameof(Drivers.DriverName));
+            Driverss = repositoryDriver.GetD(Id);
+            conductores = new SelectList(repositoryDriver.GetDriver(), nameof(Driverss.Id),
+            nameof(Driverss.DriverName));
         }
         public IActionResult OnPost(Driver Drivers)
         {
-            Drivers = repositoryDriver.Updates(Drivers);
+            Driverss = repositoryDriver.Updates(Drivers);
             return Page();
         }
 
