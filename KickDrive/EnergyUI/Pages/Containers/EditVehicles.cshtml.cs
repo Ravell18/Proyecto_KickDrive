@@ -24,7 +24,7 @@ namespace EnergyUI.Pages.Containers
     public void OnGet(int Id)
     {
         Vehicle = repositoryVehicles.GetVehicles(Id);
-            vehiculos = new SelectList(repositoryVehicles.GetV(), nameof(Vehicles.Id),
+            vehiculos = new SelectList(repositoryVehicles.GetV(), nameof(Vehicle.Id),
             nameof(Vehicle.NProp));
     }
     public IActionResult OnPost(Vehicles vehicles)

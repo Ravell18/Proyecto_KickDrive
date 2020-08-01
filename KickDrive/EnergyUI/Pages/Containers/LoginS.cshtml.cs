@@ -29,7 +29,7 @@ namespace EnergyUI.Pages.Containers
 
             if (i >= 1)
             {
-                return Redirect("/Index");
+                return Redirect("/Containers/ContRuta");
 
             }
             return Redirect("/Containers/LoginS");

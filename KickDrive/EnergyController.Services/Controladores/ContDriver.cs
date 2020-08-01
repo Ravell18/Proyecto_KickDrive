@@ -21,17 +21,17 @@ namespace EnergyController.Services.Controladores
         {
             return context.Set<Driver>().AsEnumerable();
         }
-        public Driver Updates(Driver Drivers)
+        public Driver Updates(Driver Driverss)
         {
-            var temp = context.Drivers.FirstOrDefault(x => x.Id == Drivers.Id) ?? new Driver();
+            var temp = context.Drivers.FirstOrDefault(x => x.Id == Driverss.Id) ?? new Driver();
             if (temp.Id == 0)
                 return temp;
-            temp.Id = Drivers.Id;
-            temp.DriverName = Drivers.DriverName;
-            temp.INE = Drivers.INE;
-            temp.License = Drivers.License;
-            temp.NSS = Drivers.NSS;
-            temp.Status = Drivers.Status;
+            temp.Id = Driverss.Id;
+            temp.DriverName = Driverss.DriverName;
+            temp.INE = Driverss.INE;
+            temp.License = Driverss.License;
+            temp.NSS = Driverss.NSS;
+            temp.Status = Driverss.Status;
             if (temp == null) throw new ArgumentNullException("Entity");
             if (temp.Id <= 0) throw new ArgumentNullException("Entity");
             var entity = entities.Attach(temp);
