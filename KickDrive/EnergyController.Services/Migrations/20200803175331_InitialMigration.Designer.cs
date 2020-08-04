@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnergyController.Services.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20200731195958_initial")]
-    partial class initial
+    [Migration("20200803175331_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,9 +79,12 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoutesId")
+                    b.Property<int?>("RouteId")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<string>("Ruta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -91,7 +94,7 @@ namespace EnergyController.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoutesId");
+                    b.HasIndex("RouteId");
 
                     b.ToTable("ReportRoutes");
                 });
@@ -126,8 +129,8 @@ namespace EnergyController.Services.Migrations
                     b.Property<string>("NameSup")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NumRuta")
-                        .HasColumnType("int");
+                    b.Property<string>("Ruta")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -246,7 +249,7 @@ namespace EnergyController.Services.Migrations
                 {
                     b.HasOne("EnergyController.Models.Routes", "Routes")
                         .WithMany("ReportRoutes")
-                        .HasForeignKey("RoutesId")
+                        .HasForeignKey("RouteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -34,7 +34,7 @@
                     <a asp-page="/Containers/EditDriver" asp-route-ID="@item.Id" class="btn btn-success">Visualizar</a>
                 </td>
                 <td>
-                    <button type="submit" asp-page-handler="Deletes" asp-route-ID="@item.Id" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" asp-page-handler="Delete" asp-route-ID="@item.Id" onclick="return confirm('¿Desea eliminar el registro?')" class="btn btn-danger">Eliminar</button>
                 </td>
             </tr>
             }

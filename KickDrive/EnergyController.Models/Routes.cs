@@ -11,8 +11,8 @@ namespace EnergyController.Models
     {
 
         public string NameSup { get; set; }
-        public int NumRuta { get; set; }
-
+        public string Ruta { get; set; }
+        
         //Incidentes
         public string Incidents { get; set; }
         //Hora de Entrada

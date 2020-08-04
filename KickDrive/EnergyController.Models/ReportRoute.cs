@@ -11,12 +11,14 @@ namespace EnergyController.Models
         public string DriverName { get; set; }
         public string Email { get; set; }
         public string Message { get; set; }
+
+        public string Ruta { get; set; }
         //Referencias
         //Driver
         [Display(Name = "Routes")]
         [Required(ErrorMessage = "Routes is required.")]
         [ForeignKey("Routes")]
-        public int? RoutesId { get; set; }
+        public int? RouteId { get; set; }
         public Routes Routes { get; set; }
 
     }

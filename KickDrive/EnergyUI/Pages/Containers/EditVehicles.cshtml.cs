@@ -14,22 +14,22 @@ namespace EnergyUI.Pages.Containers
     public class EditVehiclesModel : PageModel
     {
         [BindProperty]
-        public Vehicles Vehicle { get; private set; }
+        public Vehicles Vehicles { get; set; }
         public SelectList vehiculos {get; private set;}
-    public IRepositoryVehicles repositoryVehicles;
-    public EditVehiclesModel(IRepositoryVehicles repositoryVehicles)
+        public readonly IRepository<Vehicles> VRepository;
+  
+    public EditVehiclesModel(IRepository<Vehicles> VRepository)
     {
-        this.repositoryVehicles = repositoryVehicles;
+        this.VRepository = VRepository;
     }
+ 
     public void OnGet(int Id)
     {
-        Vehicle = repositoryVehicles.GetVehicles(Id);
-            vehiculos = new SelectList(repositoryVehicles.GetV(), nameof(Vehicle.Id),
-            nameof(Vehicle.NProp));
+            Vehicles = VRepository.Get(Id);
     }
     public IActionResult OnPost(Vehicles vehicles)
     {
-        Vehicle = repositoryVehicles.Updates(vehicles);
+        VRepository.Update(vehicles);
         return Page();
     }
     

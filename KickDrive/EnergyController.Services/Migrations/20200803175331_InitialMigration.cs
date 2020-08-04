@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EnergyController.Services.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,7 +84,7 @@ namespace EnergyController.Services.Migrations
                     UpdateAT = table.Column<DateTime>(nullable: true),
                     Status = table.Column<bool>(nullable: false),
                     NameSup = table.Column<string>(nullable: true),
-                    NumRuta = table.Column<int>(nullable: false),
+                    Ruta = table.Column<string>(nullable: true),
                     Incidents = table.Column<string>(nullable: true),
                     timeE = table.Column<string>(nullable: false),
                     timeS = table.Column<string>(nullable: false),
@@ -122,23 +122,24 @@ namespace EnergyController.Services.Migrations
                     DriverName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Message = table.Column<string>(nullable: true),
-                    RoutesId = table.Column<int>(nullable: false)
+                    Ruta = table.Column<string>(nullable: true),
+                    RouteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ReportRoutes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ReportRoutes_Route_RoutesId",
-                        column: x => x.RoutesId,
+                        name: "FK_ReportRoutes_Route_RouteId",
+                        column: x => x.RouteId,
                         principalTable: "Route",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReportRoutes_RoutesId",
+                name: "IX_ReportRoutes_RouteId",
                 table: "ReportRoutes",
-                column: "RoutesId");
+                column: "RouteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Route_DriverId",
